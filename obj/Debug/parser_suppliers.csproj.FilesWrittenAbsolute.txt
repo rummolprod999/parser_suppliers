@@ -5,3 +5,4 @@
 /home/alex/Рабочий стол/parser_suppliers/parser_suppliers/bin/Debug/parser_suppliers.exe
 /home/alex/Рабочий стол/parser_suppliers/parser_suppliers/obj/Debug/parser_suppliers.exe
 /home/alex/Рабочий стол/parser_suppliers/parser_suppliers/obj/Debug/parser_suppliers.exe.mdb
+/home/alex/Рабочий стол/parser_suppliers/parser_suppliers/bin/Debug/Newtonsoft.Json.dll

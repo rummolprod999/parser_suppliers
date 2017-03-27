@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.IO;
+using System.Net;
+using System.IO.Compression;
+using parser_suppliers;
 
 
 namespace parser_suppliers
@@ -13,15 +18,57 @@ namespace parser_suppliers
         public static void Main(string[] args)
         {
 
-            string _fileLog = String.Format("./log_suppliers/suppliers_{0}.log", localDate.ToString("dd_MM_yyyy"));
-            int period = 0;
+            string _fileLog = $"./log_suppliers/suppliers_{localDate:dd_MM_yyyy}.log";
+            double period = 0;
             int downCount = 10;
             string archive = "";
-            while (downCount >=0)
+            string nameArch = "suppliers-20170326.json.zip";
+            string namef = "suppliers-20170326.json";
+            string extractPath = "./";
+            /*while (downCount >=-10)
             {
-                --downCount;
+                try
+                {
+                    DateTime lastDate = localDate.AddDays(period);
+//                    Console.WriteLine(lastDate.ToString());
+                    string dateArch = String.Format("{0:yyyyMMd}", lastDate);
+                    Console.WriteLine(dateArch);
+                    string url = $"https://clearspending.ru/download/opendata/suppliers-{dateArch}.json.zip";
+                    nameArch = $"suppliers-{dateArch}.json.zip";
+                    namef = $"suppliers-{dateArch}.json";
+                    WebClient wc = new WebClient();
+                    wc.DownloadFile(url, nameArch);
+                    break;
 
+
+
+                }
+                catch (Exception ex)
+                {
+                    using (StreamWriter sw = new StreamWriter(_fileLog, true, System.Text.Encoding.Default))
+                    {
+                        sw.WriteLine(ex.ToString());
+                    }
+                    Console.WriteLine(ex.ToString());
+                    --period;
+                }
+                --downCount;
+            }*/
+            FileInfo fileInf = new FileInfo(nameArch);
+            if (fileInf.Exists)
+            {
+//                ZipFile.ExtractToDirectory(nameArch, extractPath);
+                using (StreamReader sr = new StreamReader(namef, System.Text.Encoding.UTF8))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        Parser Sup = new Parser(line);
+                        Sup.pars();
+                    }
+                }
             }
+
 
         }
     }
