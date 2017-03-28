@@ -130,6 +130,7 @@ namespace parser_suppliers
                         cmdUpdateKpp.Parameters.AddWithValue("@contact_name", contact_name);
                         cmdUpdateKpp.ExecuteNonQuery();
                         log_update++;
+
                     }
                 }
                 else

@@ -89,6 +89,12 @@ namespace parser_suppliers
                     sw.WriteLine($"Поставщиков без inn: {Parser.inn_null}\n");
                     sw.WriteLine($"Время окончания парсинга: {DateTime.Now}\n");
                 }
+                fileInf.Delete();
+                FileInfo fileInf1 = new FileInfo(namef);
+                if (fileInf1.Exists)
+                {
+                    fileInf1.Delete();
+                }
             }
         }
     }
