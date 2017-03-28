@@ -9,8 +9,8 @@ namespace parser_suppliers
         private string inn, kpp, ogrn, regionCode, organizationName, postAddress, contactPhone, contactFax,
             contactEMail, lastName, middleName, firstName, contact_name = "";
 
-        private int contracts_count, contracts223_count = 0;
-        private double contracts_sum, contracts223_sum = 0.0;
+        private int? contracts_count, contracts223_count = 0;
+        private double? contracts_sum, contracts223_sum = 0.0;
 
         public Parser(string line)
         {
@@ -22,20 +22,21 @@ namespace parser_suppliers
             var s = clear_s(l);
             JObject json = JObject.Parse(s);
             kpp = (string)json["kpp"];
-            /*contracts223_count = (int)json["contracts223Count"];
-            contracts_count = (int)json["contractsCount"];
-            contracts223_sum = (double) json["contracts223Sum"];
-            contracts_sum = (double) json["contractsSum"];
-            ogrn = (string)json["ogrn"];
-            regionCode = (string)json["regionCode"];
-            organizationName = (string)json["organizationName"];
-            postAddress = (string)json["postAddress"];
-            contactFax = (string)json["contactFax"];
-            contactEMail = (string)json["contactEMail"];
-            contactPhone = (string)json["contactPhone"];*/
-            middleName = (string) json["contactInfo"]["middleName"];
-            firstName = (string) json["contactInfo"]["firstName"];
-            lastName = (string) json["contactInfo"]["lastName"];
+            contracts223_count = (int?)json.SelectToken("contracts223Count");
+
+            contracts_count = (int?)json.SelectToken("contractsCount");
+            contracts223_sum = (double?) json.SelectToken("contracts223Sum");
+            contracts_sum = (double?) json.SelectToken("contractsSum");
+            ogrn = (string)json.SelectToken("ogrn");
+            regionCode = (string)json.SelectToken("regionCode");
+            organizationName = (string)json.SelectToken("organizationName");
+            postAddress = (string)json.SelectToken("postAddress");
+            contactFax = (string)json.SelectToken("contactFax");
+            contactEMail = (string)json.SelectToken("contactEMail");
+            contactPhone = (string)json.SelectToken("contactPhone");
+            middleName = (string) json.SelectToken("contactInfo.middleName");
+            firstName = (string) json.SelectToken("contactInfo.firstName");
+            lastName = (string) json.SelectToken("contactInfo.lastName");
             contact_name = $"{firstName} {middleName} {lastName}";
             Console.WriteLine(contact_name + "\n\n");
 
