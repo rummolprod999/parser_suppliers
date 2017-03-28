@@ -58,7 +58,8 @@ namespace parser_suppliers
             inn = (string) json.SelectToken("inn") ?? "";
             if (inn != "")
             {
-                MySqlConnection connect = ConnectToDb.GetDBConnection("localhost", "tenders_test", "test", "Dft56Point");
+                MySqlConnection connect =
+                    ConnectToDb.GetDBConnection("localhost", "tenders_test", "test", "Dft56Point");
                 connect.Open();
                 if (kpp != "")
                 {
@@ -130,7 +131,6 @@ namespace parser_suppliers
                         cmdUpdateKpp.Parameters.AddWithValue("@contact_name", contact_name);
                         cmdUpdateKpp.ExecuteNonQuery();
                         log_update++;
-
                     }
                 }
                 else
@@ -205,9 +205,6 @@ namespace parser_suppliers
                         log_update++;
                     }
                 }
-
-
-
 
 
                 connect.Close();

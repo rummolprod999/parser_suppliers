@@ -20,7 +20,6 @@ namespace parser_suppliers
             using (StreamWriter sw = new StreamWriter(_fileLog, true, System.Text.Encoding.Default))
             {
                 sw.WriteLine($"Время начала парсинга: {localDate}\n");
-
             }
             double period = 0;
             int downCount = 10;
@@ -28,7 +27,7 @@ namespace parser_suppliers
             string nameArch = "suppliers-20170326.json.zip";
             string namef = "suppliers-20170326.json";
             string extractPath = "./";
-            while (downCount >=-10)
+            while (downCount >= -10)
             {
                 try
                 {
@@ -42,9 +41,6 @@ namespace parser_suppliers
                     WebClient wc = new WebClient();
                     wc.DownloadFile(url, nameArch);
                     break;
-
-
-
                 }
                 catch (Exception ex)
                 {
@@ -60,7 +56,7 @@ namespace parser_suppliers
             FileInfo fileInf = new FileInfo(nameArch);
             if (fileInf.Exists)
             {
-               ZipFile.ExtractToDirectory(nameArch, extractPath);
+                ZipFile.ExtractToDirectory(nameArch, extractPath);
                 using (StreamReader sr = new StreamReader(namef, System.Text.Encoding.Default))
                 {
                     string line;
@@ -80,7 +76,6 @@ namespace parser_suppliers
                             }
                         }
                     }
-
                 }
                 using (StreamWriter sw = new StreamWriter(_fileLog, true, System.Text.Encoding.Default))
                 {
