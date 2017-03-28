@@ -11,11 +11,11 @@ namespace parser_suppliers
     public class ConnectToDb
     {
         public static MySqlConnection
-            GetDBConnection(string host, int port, string database, string username, string password)
+            GetDBConnection(string host, string database, string username, string password)
         {
             // Connection String.
             String connString = "Server=" + host + ";Database=" + database
-                                + ";port=" + port + ";User Id=" + username + ";password=" + password;
+                                 + ";User Id=" + username + ";password=" + password;
 
             MySqlConnection conn = new MySqlConnection(connString);
 

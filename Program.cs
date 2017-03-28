@@ -4,7 +4,6 @@ using System.Data.Common;
 using System.IO;
 using System.Net;
 using System.IO.Compression;
-using parser_suppliers;
 
 
 namespace parser_suppliers
@@ -17,7 +16,6 @@ namespace parser_suppliers
 
         public static void Main(string[] args)
         {
-
             string _fileLog = $"./log_suppliers/suppliers_{localDate:dd_MM_yyyy}.log";
             double period = 0;
             int downCount = 10;
@@ -63,13 +61,21 @@ namespace parser_suppliers
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Parser Sup = new Parser(line);
-                        Sup.pars();
+                        try
+                        {
+                            Parser Sup = new Parser(line);
+                            Sup.pars();
+                        }
+                        catch (Exception e)
+                        {
+                            using (StreamWriter sw = new StreamWriter(_fileLog, true, System.Text.Encoding.Default))
+                            {
+                                sw.WriteLine(e.ToString());
+                            }
+                        }
                     }
                 }
             }
-
-
         }
     }
 }

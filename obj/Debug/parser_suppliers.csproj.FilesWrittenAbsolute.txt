@@ -6,3 +6,11 @@
 /home/alex/Рабочий стол/parser_suppliers/parser_suppliers/obj/Debug/parser_suppliers.exe
 /home/alex/Рабочий стол/parser_suppliers/parser_suppliers/obj/Debug/parser_suppliers.exe.mdb
 /home/alex/Рабочий стол/parser_suppliers/parser_suppliers/bin/Debug/Newtonsoft.Json.dll
+/home/alex/RiderProjects/parser_suppliers/parser_suppliers/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/alex/RiderProjects/parser_suppliers/parser_suppliers/bin/Debug/parser_suppliers.exe.config
+/home/alex/RiderProjects/parser_suppliers/parser_suppliers/bin/Debug/parser_suppliers.exe.mdb
+/home/alex/RiderProjects/parser_suppliers/parser_suppliers/bin/Debug/parser_suppliers.exe
+/home/alex/RiderProjects/parser_suppliers/parser_suppliers/obj/Debug/parser_suppliers.exe
+/home/alex/RiderProjects/parser_suppliers/parser_suppliers/obj/Debug/parser_suppliers.exe.mdb
+/home/alex/RiderProjects/parser_suppliers/parser_suppliers/bin/Debug/MySql.Data.dll
+/home/alex/RiderProjects/parser_suppliers/parser_suppliers/bin/Debug/Newtonsoft.Json.dll
