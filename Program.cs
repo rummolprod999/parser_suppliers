@@ -10,8 +10,8 @@ namespace parser_suppliers
 {
     internal class Program
     {
-        private static string Db = "tenders_test";
-        private static string sfx = "";
+        public static string Db = "tenders_test";
+        public static string sfx = "";
         private static DateTime localDate = DateTime.Now;
 
         public static void Main(string[] args)

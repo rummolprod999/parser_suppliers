@@ -59,11 +59,12 @@ namespace parser_suppliers
             if (inn != "")
             {
                 MySqlConnection connect =
-                    ConnectToDb.GetDBConnection("localhost", "tenders_test", "test", "Dft56Point");
+                    ConnectToDb.GetDBConnection("localhost", Program.Db, "test", "Dft56Point");
                 connect.Open();
                 if (kpp != "")
                 {
-                    string cmdSelect = "SELECT count(id) FROM od_supplier WHERE inn = @inn AND kpp = @kpp";
+                    string cmdSelect =
+                        $"SELECT count(id) FROM od_supplier{Program.sfx} WHERE inn = @inn AND kpp = @kpp";
                     MySqlCommand cmd = new MySqlCommand(cmdSelect, connect);
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@inn", inn);
@@ -74,15 +75,8 @@ namespace parser_suppliers
                         amt = Convert.ToInt32(amtUnchecked);
                     if (amt == 0)
                     {
-                        string cmdInsertWithKpp = "INSERT INTO od_supplier SET inn = @inn, kpp = @kpp, " +
-                                                  "contracts_count = @contracts_count, " +
-                                                  "contracts223_count = @contracts223_count, " +
-                                                  "contracts_sum = @contracts_sum, " +
-                                                  "contracts223_sum = @contracts223_sum, ogrn = @ogrn," +
-                                                  "region_code = @region_code, organizationName = @organizationName," +
-                                                  "postal_address = @postal_address, contactPhone = @contactPhone," +
-                                                  "contactFax = @contactFax, contactEMail = @contactEMail," +
-                                                  "contact_name = @contact_name";
+                        string cmdInsertWithKpp =
+                            $"INSERT INTO od_supplier{Program.sfx} SET inn = @inn, kpp = @kpp, contracts_count = @contracts_count, contracts223_count = @contracts223_count, contracts_sum = @contracts_sum, contracts223_sum = @contracts223_sum, ogrn = @ogrn,region_code = @region_code, organizationName = @organizationName,postal_address = @postal_address, contactPhone = @contactPhone,contactFax = @contactFax, contactEMail = @contactEMail,contact_name = @contact_name";
                         MySqlCommand cmdInsertKpp = new MySqlCommand(cmdInsertWithKpp, connect);
                         cmdInsertKpp.Prepare();
                         cmdInsertKpp.Parameters.AddWithValue("@inn", inn);
@@ -104,15 +98,8 @@ namespace parser_suppliers
                     }
                     else
                     {
-                        string cmdUpdateWithKpp = "UPDATE od_supplier SET " +
-                                                  "contracts_count = @contracts_count, " +
-                                                  "contracts223_count = @contracts223_count, " +
-                                                  "contracts_sum = @contracts_sum, " +
-                                                  "contracts223_sum = @contracts223_sum, ogrn = @ogrn," +
-                                                  "region_code = @region_code, organizationName = @organizationName," +
-                                                  "postal_address = @postal_address, contactPhone = @contactPhone," +
-                                                  "contactFax = @contactFax, contactEMail = @contactEMail," +
-                                                  "contact_name = @contact_name WHERE inn = @inn AND kpp =@kpp";
+                        string cmdUpdateWithKpp =
+                            $"UPDATE od_supplier{Program.sfx} SET contracts_count = @contracts_count, contracts223_count = @contracts223_count, contracts_sum = @contracts_sum, contracts223_sum = @contracts223_sum, ogrn = @ogrn,region_code = @region_code, organizationName = @organizationName,postal_address = @postal_address, contactPhone = @contactPhone,contactFax = @contactFax, contactEMail = @contactEMail,contact_name = @contact_name WHERE inn = @inn AND kpp =@kpp";
                         MySqlCommand cmdUpdateKpp = new MySqlCommand(cmdUpdateWithKpp, connect);
                         cmdUpdateKpp.Prepare();
                         cmdUpdateKpp.Parameters.AddWithValue("@inn", inn);
@@ -135,7 +122,8 @@ namespace parser_suppliers
                 }
                 else
                 {
-                    string cmdSelect = "SELECT count(id) FROM od_supplier WHERE inn = @inn AND kpp = @kpp";
+                    string cmdSelect =
+                        $"SELECT count(id) FROM od_supplier{Program.sfx} WHERE inn = @inn AND kpp = @kpp";
                     MySqlCommand cmd = new MySqlCommand(cmdSelect, connect);
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@inn", inn);
@@ -146,15 +134,8 @@ namespace parser_suppliers
                         amt = Convert.ToInt32(amtUnchecked);
                     if (amt == 0)
                     {
-                        string cmdInsertWithoutKpp = "INSERT INTO od_supplier SET inn = @inn, kpp = @kpp, " +
-                                                     "contracts_count = @contracts_count, " +
-                                                     "contracts223_count = @contracts223_count, " +
-                                                     "contracts_sum = @contracts_sum, " +
-                                                     "contracts223_sum = @contracts223_sum, ogrn = @ogrn," +
-                                                     "region_code = @region_code, organizationName = @organizationName," +
-                                                     "postal_address = @postal_address, contactPhone = @contactPhone," +
-                                                     "contactFax = @contactFax, contactEMail = @contactEMail," +
-                                                     "contact_name = @contact_name";
+                        string cmdInsertWithoutKpp =
+                            $"INSERT INTO od_supplier{Program.sfx} SET inn = @inn, kpp = @kpp, contracts_count = @contracts_count, contracts223_count = @contracts223_count, contracts_sum = @contracts_sum, contracts223_sum = @contracts223_sum, ogrn = @ogrn,region_code = @region_code, organizationName = @organizationName,postal_address = @postal_address, contactPhone = @contactPhone,contactFax = @contactFax, contactEMail = @contactEMail,contact_name = @contact_name";
                         MySqlCommand cmdInsertInn = new MySqlCommand(cmdInsertWithoutKpp, connect);
                         cmdInsertInn.Prepare();
                         cmdInsertInn.Parameters.AddWithValue("@inn", inn);
@@ -176,15 +157,8 @@ namespace parser_suppliers
                     }
                     else
                     {
-                        string cmdUpdateWithOutKpp = "UPDATE od_supplier SET " +
-                                                     "contracts_count = @contracts_count, " +
-                                                     "contracts223_count = @contracts223_count, " +
-                                                     "contracts_sum = @contracts_sum, " +
-                                                     "contracts223_sum = @contracts223_sum, ogrn = @ogrn," +
-                                                     "region_code = @region_code, organizationName = @organizationName," +
-                                                     "postal_address = @postal_address, contactPhone = @contactPhone," +
-                                                     "contactFax = @contactFax, contactEMail = @contactEMail," +
-                                                     "contact_name = @contact_name WHERE inn = @inn AND kpp =@kpp";
+                        string cmdUpdateWithOutKpp =
+                            $"UPDATE od_supplier{Program.sfx} SET contracts_count = @contracts_count, contracts223_count = @contracts223_count, contracts_sum = @contracts_sum, contracts223_sum = @contracts223_sum, ogrn = @ogrn,region_code = @region_code, organizationName = @organizationName,postal_address = @postal_address, contactPhone = @contactPhone,contactFax = @contactFax, contactEMail = @contactEMail,contact_name = @contact_name WHERE inn = @inn AND kpp =@kpp";
                         MySqlCommand cmdUpdateInn = new MySqlCommand(cmdUpdateWithOutKpp, connect);
                         cmdUpdateInn.Prepare();
                         cmdUpdateInn.Parameters.AddWithValue("@inn", inn);
