@@ -17,6 +17,11 @@ namespace parser_suppliers
         public static void Main(string[] args)
         {
             string _fileLog = $"./log_suppliers/suppliers_{localDate:dd_MM_yyyy}.log";
+            using (StreamWriter sw = new StreamWriter(_fileLog, true, System.Text.Encoding.Default))
+            {
+                sw.WriteLine($"Время начала парсинга: {localDate}\n");
+
+            }
             double period = 0;
             int downCount = 10;
             string archive = "";
@@ -30,7 +35,7 @@ namespace parser_suppliers
                     DateTime lastDate = localDate.AddDays(period);
 //                    Console.WriteLine(lastDate.ToString());
                     string dateArch = String.Format("{0:yyyyMMd}", lastDate);
-                    Console.WriteLine(dateArch);
+//                    Console.WriteLine(dateArch);
                     string url = $"https://clearspending.ru/download/opendata/suppliers-{dateArch}.json.zip";
                     nameArch = $"suppliers-{dateArch}.json.zip";
                     namef = $"suppliers-{dateArch}.json";
@@ -47,7 +52,7 @@ namespace parser_suppliers
                     {
                         sw.WriteLine(ex.ToString());
                     }
-                    Console.WriteLine(ex.ToString());
+//                    Console.WriteLine(ex.ToString());
                     --period;
                 }
                 --downCount;
@@ -79,9 +84,10 @@ namespace parser_suppliers
                 }
                 using (StreamWriter sw = new StreamWriter(_fileLog, true, System.Text.Encoding.Default))
                 {
-                    sw.WriteLine("Добавлено поставщиков: " + Parser.log_insert + "\n");
-                    sw.WriteLine("Обновлено поставщиков: " + Parser.log_update + "\n");
-                    sw.WriteLine("Поставщиков без inn: " + Parser.inn_null + "\n");
+                    sw.WriteLine($"Добавлено поставщиков: {Parser.log_insert}\n");
+                    sw.WriteLine($"Обновлено поставщиков: {Parser.log_update}\n");
+                    sw.WriteLine($"Поставщиков без inn: {Parser.inn_null}\n");
+                    sw.WriteLine($"Время окончания парсинга: {DateTime.Now}\n");
                 }
             }
         }

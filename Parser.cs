@@ -10,7 +10,7 @@ namespace parser_suppliers
         public static int log_insert = 0;
         public static int log_update = 0;
         public static int inn_null = 0;
-        private string supplier;
+        private readonly string supplier;
 
         private string inn,
             kpp,
