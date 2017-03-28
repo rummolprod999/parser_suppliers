@@ -56,13 +56,14 @@ namespace parser_suppliers
             if (fileInf.Exists)
             {
                ZipFile.ExtractToDirectory(nameArch, extractPath);
-                using (StreamReader sr = new StreamReader(namef, System.Text.Encoding.UTF8))
+                using (StreamReader sr = new StreamReader(namef, System.Text.Encoding.Default))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
                         try
                         {
+                            /*Console.WriteLine(line);*/
                             Parser Sup = new Parser(line);
                             Sup.pars();
                         }

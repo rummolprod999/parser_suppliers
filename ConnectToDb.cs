@@ -15,7 +15,7 @@ namespace parser_suppliers
         {
             // Connection String.
             String connString = "Server=" + host + ";Database=" + database
-                                 + ";User Id=" + username + ";password=" + password;
+                                 + ";User Id=" + username + ";password=" + password + ";CharSet=utf8";
 
             MySqlConnection conn = new MySqlConnection(connString);
 
