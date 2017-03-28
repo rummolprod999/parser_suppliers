@@ -23,7 +23,7 @@ namespace parser_suppliers
             string nameArch = "suppliers-20170326.json.zip";
             string namef = "suppliers-20170326.json";
             string extractPath = "./";
-            /*while (downCount >=-10)
+            while (downCount >=-10)
             {
                 try
                 {
@@ -51,11 +51,11 @@ namespace parser_suppliers
                     --period;
                 }
                 --downCount;
-            }*/
+            }
             FileInfo fileInf = new FileInfo(nameArch);
             if (fileInf.Exists)
             {
-//                ZipFile.ExtractToDirectory(nameArch, extractPath);
+               ZipFile.ExtractToDirectory(nameArch, extractPath);
                 using (StreamReader sr = new StreamReader(namef, System.Text.Encoding.UTF8))
                 {
                     string line;
@@ -74,6 +74,13 @@ namespace parser_suppliers
                             }
                         }
                     }
+
+                }
+                using (StreamWriter sw = new StreamWriter(_fileLog, true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine("Добавлено поставщиков: " + Parser.log_insert + "\n");
+                    sw.WriteLine("Обновлено поставщиков: " + Parser.log_update + "\n");
+                    sw.WriteLine("Поставщиков без inn: " + Parser.inn_null + "\n");
                 }
             }
         }
