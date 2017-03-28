@@ -19,7 +19,7 @@ namespace parser_suppliers
             string _fileLog = $"./log_suppliers/suppliers_{localDate:dd_MM_yyyy}.log";
             using (StreamWriter sw = new StreamWriter(_fileLog, true, System.Text.Encoding.Default))
             {
-                sw.WriteLine($"Время начала парсинга: {localDate}\n");
+                sw.WriteLine($"Время начала парсинга: {localDate}");
             }
             double period = 0;
             int downCount = 10;
@@ -79,10 +79,10 @@ namespace parser_suppliers
                 }
                 using (StreamWriter sw = new StreamWriter(_fileLog, true, System.Text.Encoding.Default))
                 {
-                    sw.WriteLine($"Добавлено поставщиков: {Parser.log_insert}\n");
-                    sw.WriteLine($"Обновлено поставщиков: {Parser.log_update}\n");
-                    sw.WriteLine($"Поставщиков без inn: {Parser.inn_null}\n");
-                    sw.WriteLine($"Время окончания парсинга: {DateTime.Now}\n");
+                    sw.WriteLine($"Добавлено поставщиков: {Parser.log_insert}");
+                    sw.WriteLine($"Обновлено поставщиков: {Parser.log_update}");
+                    sw.WriteLine($"Поставщиков без inn: {Parser.inn_null}");
+                    sw.WriteLine($"Время окончания парсинга: {DateTime.Now}");
                 }
                 fileInf.Delete();
                 FileInfo fileInf1 = new FileInfo(namef);
